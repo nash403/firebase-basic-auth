@@ -2,17 +2,56 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js App" />
+    <div>
+      <p>
+        Sign in with your Google account below. ({{
+          loading ? "loading..." : "loaded"
+        }})
+      </p>
+
+      <p>{{ error }}</p>
+
+      <!-- Button that handles sign-in/sign-out -->
+      <button :disabled="loading" @click="user ? logout() : login()">
+        Sign {{ user && !loading ? "out" : "in with Google" }}
+      </button>
+
+      <!-- Container where we'll display the user details -->
+      <div>
+        Firebase sign-in status:
+        <span>Signed {{ user ? "in" : "out" }}</span>
+        <div>Firebase auth <code>currentUser</code> object value:</div>
+        <pre><code>{{ user }}</code></pre>
+        <div>Google OAuth Access Token:</div>
+        <pre><code>{{ credentials }}</code></pre>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
+import { useAuth } from "../useAuth";
+import { useLogin } from "../useLogin";
+import { defineComponent } from "@vue/composition-api";
 
-export default {
+export default defineComponent({
   name: "Home",
   components: {
     HelloWorld
+  },
+  setup() {
+    const { loading, user } = useAuth();
+    const { login, logout, error, credentials } = useLogin();
+
+    return {
+      loading,
+      login,
+      logout,
+      credentials,
+      user,
+      error
+    };
   }
-};
+});
 </script>

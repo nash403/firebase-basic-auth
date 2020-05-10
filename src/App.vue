@@ -4,9 +4,23 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
+    <p>{{ user && user.displayName }}</p>
     <router-view />
   </div>
 </template>
+
+<script lang="ts">
+import { useAuth } from "@/useAuth";
+import { defineComponent } from "@vue/composition-api";
+
+export default defineComponent({
+  setup() {
+    const { auth, user } = useAuth();
+    auth();
+    return { user };
+  }
+});
+</script>
 
 <style>
 #app {
