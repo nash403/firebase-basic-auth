@@ -5,15 +5,15 @@
     <div>
       <p>
         Sign in with your Google account below. ({{
-          loading ? "loading..." : "loaded"
+          !ready || signingIn ? "loading..." : "loaded"
         }})
       </p>
 
       <p>{{ error }}</p>
 
       <!-- Button that handles sign-in/sign-out -->
-      <button :disabled="loading" @click="user ? logout() : login()">
-        Sign {{ user && !loading ? "out" : "in with Google" }}
+      <button :disabled="!ready || loading" @click="user ? logout() : login()">
+        Sign {{ user ? "out" : "in with Google" }}
       </button>
 
       <!-- Container where we'll display the user details -->
@@ -23,13 +23,13 @@
         <div>Firebase auth <code>currentUser</code> object value:</div>
         <pre><code>{{ user }}</code></pre>
         <div>Google OAuth Access Token:</div>
-        <pre><code>{{ credentials }}</code></pre>
+        <pre><code>{{ user && credentials }}</code></pre>
       </div>
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import HelloWorld from "@/components/HelloWorld.vue";
 import { useAuth } from "../useAuth";
 import { useLogin } from "../useLogin";
@@ -41,11 +41,12 @@ export default defineComponent({
     HelloWorld
   },
   setup() {
-    const { loading, user } = useAuth();
-    const { login, logout, error, credentials } = useLogin();
+    const { ready, user } = useAuth();
+    const { login, logout, signingIn, error, credentials } = useLogin();
 
     return {
-      loading,
+      ready,
+      signingIn,
       login,
       logout,
       credentials,

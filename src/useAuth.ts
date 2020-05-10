@@ -5,12 +5,12 @@ import Vue from 'vue'
 
 type AuthState = {
   user: User | null
-  loading: boolean
+  ready: boolean
 }
 
 const authState: AuthState = Vue.observable({
   user: null,
-  loading: true,
+  ready: false,
 })
 
 export function useAuth () {
@@ -21,12 +21,11 @@ export function useAuth () {
       if (_user) {
         setTimeout(() => {
           authState.user = _user
-          authState.loading = false
         }, 3500);
       } else {
         authState.user = null
-        authState.loading = false
       }
+      authState.ready = true
     });
   }
 

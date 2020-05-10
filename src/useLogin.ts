@@ -4,15 +4,18 @@ import firebase from 'firebase/app'
 type LoginState = {
   credentials: firebase.auth.UserCredential | null;
   error: any;
+  signingIn: boolean;
 }
 
 export function useLogin () {
   const state: LoginState = reactive({
     credentials: null,
     error: null,
+    signingIn: false,
   })
 
   const login = () => {
+    state.signingIn = true
     const provider = new firebase.auth.GoogleAuthProvider()
     provider.setCustomParameters({
       prompt: 'select_account',
@@ -29,6 +32,7 @@ export function useLogin () {
         state.error = error
         console.error(error)
       })
+      .finally(() => state.signingIn = false)
   }
 
   const logout = () => firebase.auth().signOut()
