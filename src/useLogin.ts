@@ -3,15 +3,15 @@ import firebase from 'firebase/app'
 
 type LoginState = {
   credentials: firebase.auth.UserCredential | null;
-  error: any;
+  error: Error | null;
   signingIn: boolean;
 }
 
 export function useLogin () {
   const state: LoginState = reactive({
     credentials: null,
-    error: null,
-    signingIn: false,
+    error      : null,
+    signingIn  : false,
   })
 
   const login = () => {
@@ -32,15 +32,14 @@ export function useLogin () {
         state.error = error
         console.error(error)
       })
-      .finally(() => state.signingIn = false)
+      .finally(() => (state.signingIn = false))
   }
 
   const logout = () => firebase.auth().signOut()
 
-
   return {
     ...toRefs(state),
     login,
-    logout
+    logout,
   }
 }
