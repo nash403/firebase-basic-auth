@@ -1,6 +1,6 @@
 import firebase, { User } from 'firebase/app'
 import 'firebase/auth'
-import VueCompositionApi, { toRefs, reactive } from '@vue/composition-api'
+import VueCompositionApi, { toRefs, reactive, computed } from '@vue/composition-api'
 
 // the two following lines won't be necessary after vue 3.0 release
 import Vue from 'vue'
@@ -25,7 +25,7 @@ export function useAuth () {
         setTimeout(() => {
           authState.user = _user
           authState.ready = true
-        }, 3500)
+        }, authState.ready ? 0 : 3500)
       } else {
         authState.user = null
         authState.ready = true
@@ -35,6 +35,7 @@ export function useAuth () {
 
   return {
     auth,
+    isAuthenticated: computed(() => !!authState.user),
     ...toRefs(authState),
   }
 }
