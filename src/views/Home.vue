@@ -10,7 +10,7 @@
       <p>{{ error }}</p>
 
       <!-- Button that handles sign-in/sign-out -->
-      <button :disabled="!ready || loading" @click="user ? logout() : login()">
+      <button :disabled="!ready || signingIn" @click="user ? logout() : login()">
         Sign {{ user ? 'out' : 'in with Google' }}
       </button>
 
