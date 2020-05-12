@@ -1,2 +1,2 @@
 
-export const isStandaloneMode = () => window.matchMedia('(display-mode: standalone)').matches
+export const isDesktop = () => window.matchMedia('(hover: hover)').matches
