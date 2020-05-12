@@ -1,5 +1,6 @@
-import { reactive, toRefs } from '@vue/composition-api'
 import firebase from 'firebase/app'
+import { reactive, toRefs } from '@vue/composition-api'
+import { isStandaloneMode } from '@/util/functions'
 
 type LoginState = {
   credentials: firebase.auth.UserCredential | null;
@@ -22,17 +23,21 @@ export function useLogin () {
     })
     provider.addScope('https://www.googleapis.com/auth/userinfo.profile')
     provider.addScope('https://www.googleapis.com/auth/userinfo.email')
-    firebase
-      .auth()
-      .signInWithPopup(provider)
-      .then(result => {
-        state.credentials = result
-      })
-      .catch(error => {
-        state.error = error
-        console.error(error)
-      })
-      .finally(() => (state.signingIn = false))
+    const auth = firebase.auth()
+    if (isStandaloneMode()) {
+      auth.signInWithRedirect(provider)
+    } else {
+      auth
+        .signInWithPopup(provider)
+        .then(result => {
+          state.credentials = result
+        })
+        .catch(error => {
+          state.error = error
+          console.error(error)
+        })
+        .finally(() => (state.signingIn = false))
+    }
   }
 
   const logout = () => firebase.auth().signOut()
