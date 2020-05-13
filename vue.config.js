@@ -4,12 +4,10 @@ module.exports = {
   chainWebpack (config) {
     // We provide the app's title in Webpack's name field, so that
     // it can be accessed in index.html to inject the correct title.
-    config
-      .plugin('html')
-      .tap(args => {
-        args[0].title = process.env.VUE_APP_APP_TITLE
-        return args
-      })
+    config.plugin('html').tap(args => {
+      args[0].title = process.env.VUE_APP_APP_TITLE
+      return args
+    })
 
     // Don't allow importing .vue files without the extension, as
     // it's necessary for some Vetur autocompletions.

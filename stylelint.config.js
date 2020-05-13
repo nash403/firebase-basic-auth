@@ -25,13 +25,13 @@ module.exports = {
     'string-no-newline'                            : null,
     // Enforce camelCase for classes and ids, to work better
     // with CSS modules
-    'selector-class-pattern'                       : /^[a-z][a-zA-Z]*(-(enter|leave)(-(active|to))?)?$/,
+    'selector-class-pattern'                       : /^((router-link)|([a-z][a-zA-Z]*))(-(exact|active|enter|leave)(-(active|to))?)?$/,
     'selector-id-pattern'                          : /^[a-z][a-zA-Z]*$/,
     // Limit the number of universal selectors in a selector,
     // to avoid very slow selectors
     'selector-max-universal'                       : 1,
     // Disallow allow global element/type selectors in scoped modules
-    'selector-max-type'                            : [0, { ignore: ['child', 'descendant', 'compounded'] }],
+    'selector-max-type'                            : [1, { ignore: ['child', 'descendant', 'compounded'] }],
     // ===
     // SCSS
     // ===
@@ -45,6 +45,5 @@ module.exports = {
     'scss/selector-no-redundant-nesting-selector'  : true,
     // Allow SCSS and CSS module keywords beginning with `@`
     'at-rule-no-unknown'                           : null,
-    'scss/at-rule-no-unknown'                      : true,
   },
 }

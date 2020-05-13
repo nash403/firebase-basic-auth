@@ -4,13 +4,18 @@
     <HelloWorld msg="Welcome to Your Vue.js App" />
     <div>
       <p>
-        Sign in with your Google account below. ({{ !ready || signingIn ? 'loading...' : 'loaded' }})
+        Sign in with your Google account below. ({{
+          !ready || signingIn ? 'loading...' : 'loaded'
+        }})
       </p>
 
       <p>{{ error }}</p>
 
       <!-- Button that handles sign-in/sign-out -->
-      <button :disabled="!ready || signingIn" @click="user ? logout() : login()">
+      <button
+        :disabled="!ready || signingIn"
+        @click="user ? logout() : login()"
+      >
         Sign {{ user ? 'out' : 'in with Google' }}
       </button>
 

@@ -25,13 +25,19 @@ export function useLogin () {
     provider.addScope('https://www.googleapis.com/auth/userinfo.email')
     const auth = firebase.auth()
     if (isDesktop()) {
-      auth.signInWithPopup(provider)
-        .then(result => { state.credentials = result })
-        .catch(error => { state.error = error })
+      auth
+        .signInWithPopup(provider)
+        .then(result => {
+          state.credentials = result
+        })
+        .catch(error => {
+          state.error = error
+        })
         .finally(() => (state.signingIn = false))
     } else {
-      auth.signInWithRedirect(provider)
-      .catch(error => { state.error = error })
+      auth.signInWithRedirect(provider).catch(error => {
+        state.error = error
+      })
     }
   }
 
