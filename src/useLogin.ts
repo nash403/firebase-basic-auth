@@ -1,6 +1,6 @@
 import firebase from 'firebase/app'
 import { reactive, toRefs } from '@vue/composition-api'
-import { isDesktop } from '@/util/functions'
+import { isDesktop } from '@/util/helpers'
 
 type LoginState = {
   credentials: firebase.auth.UserCredential | null;
