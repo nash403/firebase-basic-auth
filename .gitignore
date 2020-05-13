@@ -1,7 +1,15 @@
+# OS Files
 .DS_Store
+Thumbs.db
 node_modules
-/dist
+
+# Dev/Build Artifacts
 .firebase
+/dist/
+/tests/e2e/videos/
+/tests/e2e/screenshots/
+/tests/unit/coverage/
+jsconfig.json
 
 # local env files
 .env.local
@@ -14,7 +22,6 @@ yarn-error.log*
 
 # Editor directories and files
 .idea
-.vscode
 *.suo
 *.ntvs*
 *.njsproj

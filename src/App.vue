@@ -15,16 +15,16 @@
 </template>
 
 <script lang="ts">
-import { useAuth } from '@/useAuth'
-import { defineComponent } from '@vue/composition-api'
+  import { useAuth } from '@/useAuth'
+  import { defineComponent } from '@vue/composition-api'
 
-export default defineComponent({
-  setup () {
-    const { auth, user } = useAuth()
-    auth()
-    return { user }
-  },
-})
+  export default defineComponent({
+    setup () {
+      const { auth, user } = useAuth()
+      auth()
+      return { user }
+    },
+  })
 </script>
 
 <style>

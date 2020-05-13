@@ -28,29 +28,29 @@
 </template>
 
 <script lang="ts">
-import HelloWorld from '@/components/HelloWorld.vue'
-import { useAuth } from '../useAuth'
-import { useLogin } from '../useLogin'
-import { defineComponent } from '@vue/composition-api'
+  import HelloWorld from '@/components/HelloWorld.vue'
+  import { useAuth } from '../useAuth'
+  import { useLogin } from '../useLogin'
+  import { defineComponent } from '@vue/composition-api'
 
-export default defineComponent({
-  name      : 'Home',
-  components: {
-    HelloWorld,
-  },
-  setup () {
-    const { ready, user } = useAuth()
-    const { login, logout, signingIn, error, credentials } = useLogin()
+  export default defineComponent({
+    name      : 'Home',
+    components: {
+      HelloWorld,
+    },
+    setup () {
+      const { ready, user } = useAuth()
+      const { login, logout, signingIn, error, credentials } = useLogin()
 
-    return {
-      ready,
-      signingIn,
-      login,
-      logout,
-      credentials,
-      user,
-      error,
-    }
-  },
-})
+      return {
+        ready,
+        signingIn,
+        login,
+        logout,
+        credentials,
+        user,
+        error,
+      }
+    },
+  })
 </script>

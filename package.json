@@ -1,9 +1,11 @@
 {
   "name": "firebase-basic-auth",
+  "description": "Vue 2.x template with composition api + Typescript + Firebase Authentication",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --modern",
+    "build:ci": "npm run build --report",
     "lint": "vue-cli-service lint",
     "deploy": "nmp run build && firebase deploy",
     "dev": "vue-cli-service serve"
@@ -20,8 +22,8 @@
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^2.2.0",
     "@fullhuman/vue-cli-plugin-purgecss": "~2.2.0",
-    "@typescript-eslint/eslint-plugin": "^2.26.0",
-    "@typescript-eslint/parser": "^2.26.0",
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
     "@vue/cli-plugin-babel": "~4.3.0",
     "@vue/cli-plugin-eslint": "~4.3.0",
     "@vue/cli-plugin-pwa": "~4.3.0",
@@ -31,7 +33,7 @@
     "@vue/eslint-config-typescript": "^5.0.2",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "typescript": "~3.8.3",
+    "typescript": "^3.9.2",
     "vue-template-compiler": "^2.6.11"
   }
 }

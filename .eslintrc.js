@@ -15,6 +15,7 @@ module.exports = {
   rules: {
     'no-console'     : process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger'    : process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'quotes': ['error', 'single'],
     // forbid useless extra space
     'no-multi-spaces': [
       'error',
@@ -48,7 +49,7 @@ module.exports = {
     'operator-linebreak'         : [2, 'before'],
 
     // Vue rules
-    'vue/script-indent'                    : ['error', 2, { baseIndent: 0 }],
+    'vue/script-indent'                    : ['error', 2, { baseIndent: 1 }],
     'vue/no-v-html'                        : 'off',
     'vue/max-attributes-per-line'          : ['error', { singleline: 3 }],
     'vue/attributes-order'                 : 'error',

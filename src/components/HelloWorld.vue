@@ -123,14 +123,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
+  import { defineComponent } from '@vue/composition-api'
 
-export default defineComponent({
-  name : 'HelloWorld',
-  props: {
-    msg: String,
-  },
-})
+  export default defineComponent({
+    name : 'HelloWorld',
+    props: {
+      msg: String,
+    },
+  })
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

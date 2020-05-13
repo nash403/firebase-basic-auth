@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-ignore */
+
 import '@/assets/styles/tailwind.css'
 import Vue from 'vue'
 import App from './App.vue'
@@ -21,9 +23,25 @@ if (!firebase.apps.length) {
 }
 
 Vue.config.productionTip = false
+// If running inside Cypress...
+if (process.env.VUE_APP_TEST === 'e2e') {
+  // Ensure tests fail when Vue emits an error.
+  // @ts-ignore
+  Vue.config.errorHandler = window.Cypress.cy.onUncaughtException
+}
+
 Vue.use(VueCompositionApi)
 
-new Vue({
+const app = new Vue({
   router,
   render: h => h(App),
 }).$mount('#app')
+
+// If running e2e tests...
+if (process.env.VUE_APP_TEST === 'e2e') {
+  // Attach the app to the window, which can be useful
+  // for manually setting state in Cypress commands
+  // such as `cy.logIn()`.
+  // @ts-ignore
+  window.__app__ = app
+}

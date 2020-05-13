@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const IN_PRODUCTION = process.env.NODE_ENV === 'production'
 const purgecss = require('@fullhuman/postcss-purgecss')({
-  content: [ `./public/**/*.html`, `./src/**/*.vue`, `./src/**/*.jsx` ],
+  content: [ './public/**/*.html', './src/**/*.vue', './src/**/*.jsx' ],
   defaultExtractor (content) {
     const contentWithoutStyleBlocks = content.replace(/<style[^]+?<\/style>/gi, '')
     return contentWithoutStyleBlocks.match(/[A-Za-z0-9-_/:]*[A-Za-z0-9-_/]+/g) || []
