@@ -6,6 +6,10 @@ import App from './App.vue'
 import './registerServiceWorker'
 import router from './router'
 import VueCompositionApi from '@vue/composition-api'
+
+// Globally register all `_base`-prefixed components
+import '@/components/globals'
+
 import firebase from 'firebase/app'
 
 if (!firebase.apps.length) {

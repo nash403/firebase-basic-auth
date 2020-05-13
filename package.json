@@ -10,10 +10,13 @@
     "lint:eslint": "vue-cli-service lint",
     "lint:stylelint": "stylelint --fix \"src/**/*.{vue,css,scss}\" \"public/**/*.css\"",
     "lint:markdownlint": "markdownlint \"docs/*.md\" \"*.md\"",
-    "pretty": "prettier --write --loglevel warn \"**/*.{js,ts,json,css,scss,vue,html,md}\"",
+    "prettier": "prettier --write --loglevel warn",
+    "pretty": "npm run prettier \"**/*.{js,ts,json,css,scss,vue,html,md}\"",
     "format": "run-s pretty lint",
     "deploy": "nmp run build && firebase deploy",
-    "dev": "vue-cli-service serve"
+    "dev": "vue-cli-service serve",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "gitHooks": {
     "pre-commit": "cross-env PRE_COMMIT=true lint-staged"
@@ -28,8 +31,13 @@
     "vue-router": "^3.1.6"
   },
   "devDependencies": {
+    "@babel/core": "^7.9.6",
     "@fullhuman/postcss-purgecss": "^2.2.0",
     "@fullhuman/vue-cli-plugin-purgecss": "~2.2.0",
+    "@storybook/addon-actions": "^5.3.18",
+    "@storybook/addon-links": "^5.3.18",
+    "@storybook/addons": "^5.3.18",
+    "@storybook/vue": "^5.3.18",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",
     "@vue/cli-plugin-babel": "~4.3.0",
@@ -39,6 +47,8 @@
     "@vue/cli-plugin-typescript": "~4.3.0",
     "@vue/cli-service": "~4.3.0",
     "@vue/eslint-config-typescript": "^5.0.2",
+    "babel-loader": "^8.1.0",
+    "babel-preset-vue": "^2.0.2",
     "cross-env": "^7.0.2",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",

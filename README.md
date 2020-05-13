@@ -4,12 +4,14 @@
 
 ## 🚀 Features
 
-- Typescript
 - Firebase Google authentication
-- Vue Router
-- PWA
-- Tailwind
+- Typescript
 - Uses @/vue-composition-api
+- PWA
+- Vue Router
+- Tailwind
+- Storybook
+- Linters for multiple file kinds + lint-staged
 
 ## Project setup
 
