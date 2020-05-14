@@ -4,26 +4,26 @@ import { linkTo } from '@storybook/addon-links'
 import MyButton from './MyButton'
 
 export default {
-  title: 'Button',
+  title    : 'Button',
   component: MyButton,
 }
 
 export const Text = () => ({
   components: { MyButton },
-  template: '<my-button @click="action">Hello Button</my-button>',
-  methods: { action: action('clicked') },
+  template  : '<my-button @click="action">Hello Button</my-button>',
+  methods   : { action: action('clicked') },
 })
 
 export const Jsx = () => ({
   components: { MyButton },
-  render(h) {
+  render (h) { // eslint-disable-line
     return <my-button onClick={this.action}>With JSX</my-button>
   },
-  methods: { action: linkTo('clicked') },
+  methods: { action: linkTo('Button', 'Text') },
 })
 
 export const Emoji = () => ({
   components: { MyButton },
-  template: '<my-button @click="action">😀 😎 👍 💯</my-button>',
-  methods: { action: action('clicked') },
+  template  : '<my-button @click="action">😀 😎 👍 💯</my-button>',
+  methods   : { action: action('clicked') },
 })

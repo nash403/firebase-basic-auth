@@ -6,15 +6,15 @@ export default {
 
   props: {
     showApp: {
-      type: Function,
+      type   : Function,
       default: log,
     },
   },
 
-  data() {
+  data () {
     return {
       main: {
-        padding: 15,
+        padding   : 15,
         lineHeight: 1.4,
         fontFamily:
           '"Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif',
@@ -26,20 +26,20 @@ export default {
       },
 
       link: {
-        color: '#1474f3',
+        color         : '#1474f3',
         textDecoration: 'none',
-        borderBottom: '1px solid #1474f3',
-        paddingBottom: 2,
+        borderBottom  : '1px solid #1474f3',
+        paddingBottom : 2,
       },
 
       code: {
-        fontSize: 15,
-        fontWeight: 600,
-        padding: '2px 5px',
-        border: '1px solid #eae9e9',
-        borderRadius: 4,
+        fontSize       : 15,
+        fontWeight     : 600,
+        padding        : '2px 5px',
+        border         : '1px solid #eae9e9',
+        borderRadius   : 4,
         backgroundColor: '#f3f2f2',
-        color: '#3a3a3a',
+        color          : '#3a3a3a',
       },
 
       note: {
@@ -114,7 +114,7 @@ export default {
   `,
 
   methods: {
-    onClick(event) {
+    onClick (event) {
       event.preventDefault()
       this.showApp()
     },
