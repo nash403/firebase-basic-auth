@@ -17,6 +17,7 @@ export function useLogin () {
 
   const login = () => {
     state.signingIn = true
+    state.error = null
     const provider = new firebase.auth.GoogleAuthProvider()
     provider.setCustomParameters({
       prompt: 'select_account',
@@ -41,7 +42,10 @@ export function useLogin () {
     }
   }
 
-  const logout = () => firebase.auth().signOut()
+  const logout = () => {
+    state.error = null
+    firebase.auth().signOut()
+  }
 
   return {
     ...toRefs(state),

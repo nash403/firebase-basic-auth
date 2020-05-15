@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <nav id="nav" class="p-8 text-center">
       <RouterLink to="/">
         Home
       </RouterLink>
@@ -8,8 +8,8 @@
       <RouterLink to="/about">
         About
       </RouterLink>
-    </div>
-    <p>{{ user && user.displayName }}</p>
+    </nav>
+    <FirebaseUser />
     <RouterView />
   </div>
 </template>
@@ -17,8 +17,12 @@
 <script lang="ts">
   import { useAuth } from '@/useAuth'
   import { defineComponent } from '@vue/composition-api'
+  import FirebaseUser from '@/components/FirebaseUser.vue'
 
   export default defineComponent({
+    components: {
+      FirebaseUser,
+    },
     setup () {
       const { auth, user } = useAuth()
       auth()
@@ -28,18 +32,6 @@
 </script>
 
 <style>
-  #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    color: #2c3e50;
-    text-align: center;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  #nav {
-    padding: 30px;
-  }
-
   #nav a {
     font-weight: bold;
     color: #2c3e50;

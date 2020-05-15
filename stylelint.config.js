@@ -23,9 +23,8 @@ module.exports = {
   rules: {
     // Allow newlines inside class attribute values
     'string-no-newline'                            : null,
-    // Enforce camelCase for classes and ids, to work better
+    // Enforce camelCase for ids, to work better
     // with CSS modules
-    'selector-class-pattern'                       : /^((router-link)|([a-z][a-zA-Z]*))(-(exact|active|enter|leave)(-(active|to))?)?$/,
     'selector-id-pattern'                          : /^[a-z][a-zA-Z]*$/,
     // Limit the number of universal selectors in a selector,
     // to avoid very slow selectors
