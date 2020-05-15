@@ -8,9 +8,15 @@
       <RouterLink to="/about">
         About
       </RouterLink>
+      |
+      <RouterLink to="/user">
+        User infos
+      </RouterLink>
     </nav>
-    <FirebaseUser />
-    <RouterView />
+    <div class="divide-y divide-gray-400 mx-4 md:mx-64">
+      <FirebaseUser class="mb-6" />
+      <RouterView />
+    </div>
   </div>
 </template>
 
@@ -24,9 +30,9 @@
       FirebaseUser,
     },
     setup () {
-      const { auth, user } = useAuth()
-      auth()
-      return { user }
+      const { authenticate } = useAuth()
+      authenticate()
+      return {}
     },
   })
 </script>

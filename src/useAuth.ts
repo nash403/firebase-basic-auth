@@ -21,26 +21,15 @@ const authState: AuthState = reactive({
 })
 
 export function useAuth () {
-  const auth = () => {
+  const authenticate = () => {
     firebase.auth().onAuthStateChanged(_user => {
-      if (_user) {
-        // add fake delay for ready state after authentication
-        setTimeout(
-          () => {
-            authState.user = _user
-            authState.ready = true
-          },
-          authState.ready ? 0 : 3500,
-        )
-      } else {
-        authState.user = null
-        authState.ready = true
-      }
+      authState.user = _user ? _user : null
+      authState.ready = true
     })
   }
 
   return {
-    auth,
+    authenticate,
     isAuthenticated: computed(() => !!authState.user),
     ...toRefs(authState),
   }
