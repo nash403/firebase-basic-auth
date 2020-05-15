@@ -16,7 +16,8 @@
     "prettier": "prettier --write --loglevel warn",
     "prettier:all": "npm run prettier \"**/*.{js,ts,json,css,scss,vue,html,md}\"",
     "format": "run-s prettier:all lint",
-    "deploy": "nmp run build && firebase deploy",
+    "deploy:firebase": "firebase deploy --only hosting",
+    "deploy": "run-s build deploy:firebase",
     "dev": "vue-cli-service serve",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
