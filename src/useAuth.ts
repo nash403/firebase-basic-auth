@@ -13,11 +13,13 @@ Vue.use(VueCompositionApi)
 type AuthState = {
   user: User | null;
   ready: boolean;
+  error: Error | null;
 }
 
 const authState: AuthState = reactive({
   user : null,
   ready: false,
+  error: null,
 })
 
 export function useAuth () {
@@ -25,6 +27,9 @@ export function useAuth () {
     firebase.auth().onAuthStateChanged(_user => {
       authState.user = _user ? _user : null
       authState.ready = true
+    })
+    firebase.auth().getRedirectResult().catch(error =>{
+      authState.error = error
     })
   }
 

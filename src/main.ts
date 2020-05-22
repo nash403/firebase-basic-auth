@@ -7,7 +7,7 @@ import './registerServiceWorker'
 import router from './router'
 import VueCompositionApi from '@vue/composition-api'
 
-// Globally register all `_base`-prefixed components
+// Globally register all `Base`-prefixed components
 import '@/components/globals'
 
 import firebase from 'firebase/app'
